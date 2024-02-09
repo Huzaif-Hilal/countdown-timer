@@ -1,0 +1,93 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+body{
+    height: 100dvh;
+    width: 100dvw;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+main{
+    width: 360px;
+    height: 300px;
+}
+main > div.timer-section
+{
+    display: flex;
+    flex-basis: 100%;
+    justify-content: center;
+    height: max-content;
+}
+main > div.timer-section > section.timer{
+    color: #ff9500;
+    font-size: 155px;
+    font-weight: bold;
+}
+main > div.buttons-section{
+    width: 100%;
+    max-height: 100%;
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+    margin: 10px 0px 10px 0px;
+}
+main > div.buttons-section > button{
+    height: 50px;
+    width: 185px;
+    border-radius: 0px;
+    border: 0px;
+    font-size: 16px;
+    color: white;
+    font-weight: 400;
+    cursor: pointer;
+    transition: transform ease-in-out 0.1s;
+    &:first-child{
+        background-color: #0090DD;
+    }
+    &:first-child:disabled{
+        background-color: #005685;
+        cursor: not-allowed;
+        transform: scale(1);
+    }
+    &:nth-child(2){
+        background-color: #a3710b;
+    }
+    &:nth-child(2):disabled{
+        background-color: #624407;
+        cursor: not-allowed;
+        color: #999999;
+        transform: scale(1);
+    }
+    &:last-child{
+        background-color: #4aae70;
+    }
+
+    &:hover{
+        transform: scale(1.02);
+    }
+}
+main > div.inputs-section > label{
+    color: white;
+    font-size: 24px;
+}
+main > div.inputs-section > input{
+    margin: 0px calc(100% - 250px) 5px 8px;
+    font-size: 20px;
+    outline: none;
+    border-radius: 0px;
+    border: 0px;
+    width: 80px;
+    &::placeholder{
+        color: #c8e1e1;
+    }
+
+    &:nth-of-type(2){
+        margin-left: 6px;
+    }
+}
+.none{
+    display: none;
+}
