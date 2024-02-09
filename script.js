@@ -108,7 +108,7 @@ buttons[2].addEventListener("click", (e)=>{
 
 //Updates Inner HTML of timer when there is a change in seconds input field
 minutes_in.addEventListener("change", ()=>{
-    if(minutes_in.value<0)
+    if(minutes_in.value<0 || minutes_in.value.trim() == "")
     {
         alert('Error! Invalid values')
         minutes_in.value = 0;
@@ -126,7 +126,7 @@ minutes_in.addEventListener("change", ()=>{
 
 //Updates Inner HTML of timer when there is a change in seconds input field
 seconds_in.addEventListener("change", ()=>{
-    if(seconds_in.value<0)
+    if(seconds_in.value<0 || seconds_in.value.trim() == "")
     {
         alert('Error! Invalid Values')
         seconds_in.value = 0;
