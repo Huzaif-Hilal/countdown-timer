@@ -1,4 +1,4 @@
-// -----> Fetching HTML Data and fields
+// -----> Fetching HTML Data and fields--------------------------------------------------------------------------------------------------
 let timer = document.querySelector(".timer")
 let inputs_section_container = document.querySelector(".inputs-section")
 let buttons = Array.from(document.getElementsByTagName("button"))
@@ -13,7 +13,7 @@ let def_time = timer.innerText;
 
 
 
-// -----> Functions
+// -----> Functions ---------------------------------------------------------------------------------------------------------------------
 //resets time when timer ends or user clicks reset button
 const reset = () =>{
     clearInterval(TimeUpdater);
@@ -74,7 +74,7 @@ const check_time = (time) =>{
 
 
 
-// -----> Events
+// -----> Events ------------------------------------------------------------------------------------------------------------------------
 //When Edit Timer is Pressed, Minutes and seconds fields becomes hidden or visible
 buttons[0].addEventListener("click", ()=>{
     inputs_section_container.classList.toggle("none")
