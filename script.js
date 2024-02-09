@@ -70,9 +70,20 @@ const check_time = (time) =>{
         reset();
         alert("Timer Completed!")
     }
+    else if(time[0] < 0 || time[1] < 0)
+    {
+        reset();
+    }
 }
 
-
+const checked = () =>{
+    if(timer.innerText!== "00:00")
+    {
+        return true
+    }
+    alert(`Timer Completed!`)
+    timer.innerText = "02:00"
+}
 
 // -----> Events ------------------------------------------------------------------------------------------------------------------------
 //When Edit Timer is Pressed, Minutes and seconds fields becomes hidden or visible
@@ -88,26 +99,45 @@ buttons[1].addEventListener("click",  ()=>{
 
 //Starts or stops timer on click and Disables, Enables and changes colour of buttons
 buttons[2].addEventListener("click", (e)=>{
+    if(checked() == true)
+    {
     start_stop();
-    toggle()
+    toggle();
+    }
 })
 
 //Updates Inner HTML of timer when there is a change in seconds input field
 minutes_in.addEventListener("change", ()=>{
-    let arr = timer.innerHTML.split(":")
-    arr[0] = minutes_in.value
-    String(arr[0]).length == 1 ? arr[0] = `0${arr[0]}` : arr[0] = arr[0];
-    String(arr[1]).length == 1 ? arr[1] = `0${arr[1]}` : arr[1] = arr[1];
-    timer.innerHTML = arr.join(':');
-    def_time = arr.join(':')
+    if(minutes_in.value<0)
+    {
+        alert('Error! Invalid values')
+        minutes_in.value = 0;
+    }
+    else
+    {
+        let arr = timer.innerHTML.split(":")
+        arr[0] = minutes_in.value
+        String(arr[0]).length == 1 ? arr[0] = `0${arr[0]}` : arr[0] = arr[0];
+        String(arr[1]).length == 1 ? arr[1] = `0${arr[1]}` : arr[1] = arr[1];
+        timer.innerHTML = arr.join(':');
+        def_time = arr.join(':')
+    }
 })
 
 //Updates Inner HTML of timer when there is a change in seconds input field
 seconds_in.addEventListener("change", ()=>{
-    let ary = timer.innerHTML.split(":")
-    ary[1] = seconds_in.value
-    String(ary[0]).length == 1 ? ary[0] = `0${ary[0]}` : ary[0] = ary[0];
-    String(ary[1]).length == 1 ? ary[1] = `0${ary[1]}` : ary[1] = ary[1];
-    timer.innerHTML = ary.join(':');
-    def_time = ary.join(':')
+    if(seconds_in.value<0)
+    {
+        alert('Error! Invalid Values')
+        seconds_in.value = 0;
+    }
+    else
+    {   
+        let ary = timer.innerHTML.split(":")
+        ary[1] = seconds_in.value
+        String(ary[0]).length == 1 ? ary[0] = `0${ary[0]}` : ary[0] = ary[0];
+        String(ary[1]).length == 1 ? ary[1] = `0${ary[1]}` : ary[1] = ary[1];
+        timer.innerHTML = ary.join(':');
+        def_time = ary.join(':')
+    }
 })
