@@ -58,6 +58,7 @@ const updateTimer = () =>{
 //Starts or Stops Timer When start or stop button is pressed
 const start_stop = () => {
     if(buttons[2].innerText == "Start"){    
+        def_time = timer.innerText;
         TimeUpdater = setInterval(updateTimer, 1000);
     } else {
         clearInterval(TimeUpdater);
