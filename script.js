@@ -18,6 +18,8 @@ let def_time = timer.innerText;
 const reset = () =>{
     clearInterval(TimeUpdater);
     timer.innerText = def_time;
+    buttons[1].disabled = true;
+    toggle()
 }
 
 // Disables, Enables and changes colour of buttons when Start button is pressed
@@ -76,14 +78,16 @@ const check_time = (time) =>{
     }
 }
 
-//Checks if the time Given is valid then starts timer
+//Checks if the time Given is valid then starts timer otherwise returns error
 const checked = () =>{
     if(timer.innerText!== "00:00")
     {
         return true
     }
-    alert(`Timer Completed!`)
+    alert(`Invalid Input!`)
     timer.innerText = "02:00"
+    minutes_in.value = "02";
+    seconds_in.value = "00";
 }
 
 
@@ -97,7 +101,6 @@ buttons[0].addEventListener("click", ()=>{
 // Resets Timer
 buttons[1].addEventListener("click",  ()=>{
     reset();
-    buttons[1].disabled = true;
     if(buttons[2].innerText === "Stop")
     {
         toggle();
@@ -117,34 +120,27 @@ buttons[2].addEventListener("click", (e)=>{
 minutes_in.addEventListener("change", ()=>{
     if(minutes_in.value<0 || minutes_in.value.trim() == "")
     {
-        alert('Error! Invalid values')
         minutes_in.value = 0;
-    }
-    else
-    {
+    } else if(minutes_in.value.trim() > 99) minutes_in.value = 99;
         let arr = timer.innerHTML.split(":")
         arr[0] = minutes_in.value
         String(arr[0]).length == 1 ? arr[0] = `0${arr[0]}` : arr[0] = arr[0];
         String(arr[1]).length == 1 ? arr[1] = `0${arr[1]}` : arr[1] = arr[1];
         timer.innerHTML = arr.join(':');
         def_time = arr.join(':')
-    }
 })
 
 //Updates Inner HTML of timer when there is a change in seconds input field
 seconds_in.addEventListener("change", ()=>{
     if(seconds_in.value<0 || seconds_in.value.trim() == "")
     {
-        alert('Error! Invalid Values')
         seconds_in.value = 0;
     }
-    else
-    {   
+    else if ( seconds_in.value.trim() > 59) seconds_in.value = 59;
         let ary = timer.innerHTML.split(":")
         ary[1] = seconds_in.value
         String(ary[0]).length == 1 ? ary[0] = `0${ary[0]}` : ary[0] = ary[0];
         String(ary[1]).length == 1 ? ary[1] = `0${ary[1]}` : ary[1] = ary[1];
         timer.innerHTML = ary.join(':');
         def_time = ary.join(':')
-    }
 })

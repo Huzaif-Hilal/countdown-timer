@@ -50,13 +50,14 @@ main > div.buttons-section > button{
     &:first-child:disabled{
         background-color: #005685;
         cursor: not-allowed;
+        color: #999999;
         transform: scale(1);
     }
     &:nth-child(2){
         background-color: #a3710b;
     }
     &:nth-child(2):disabled{
-        background-color: #624407;
+        background-color: hsl(40, 87%, 21%);
         cursor: not-allowed;
         color: #999999;
         transform: scale(1);
