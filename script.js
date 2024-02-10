@@ -27,13 +27,11 @@ const toggle = () => {
         buttons[2].innerText = "Stop";
         buttons[2].style.background = "#ef6262";
         buttons[0].disabled = true;
-        buttons[1].disabled = false;
         inputs_section_container.classList.add("none")
     } else {
-        buttons[2].innerText = "Start"; 
-        buttons[2].style.background = "#4aae70"
-        buttons[0].disabled = false;
-        buttons[1].disabled = true;
+            buttons[2].innerText = "Start"; 
+            buttons[2].style.background = "#4aae70"
+            buttons[0].disabled = false;
     }
 }
 
@@ -43,8 +41,10 @@ const updateTimer = () =>{
         if(time[1]=="00") {
             time[1] = 59;
             time[0]--
+            buttons[1].disabled = false;
         } else{
             time[1]--
+            buttons[1].disabled = false;
         }
 
          String(time[0]).length == 1 ? time[0] = `0${time[0]}` : time[0] = time[0];
@@ -76,6 +76,7 @@ const check_time = (time) =>{
     }
 }
 
+//Checks if the time Given is valid then starts timer
 const checked = () =>{
     if(timer.innerText!== "00:00")
     {
@@ -85,24 +86,30 @@ const checked = () =>{
     timer.innerText = "02:00"
 }
 
+
+
 // -----> Events ------------------------------------------------------------------------------------------------------------------------
 //When Edit Timer is Pressed, Minutes and seconds fields becomes hidden or visible
 buttons[0].addEventListener("click", ()=>{
     inputs_section_container.classList.toggle("none")
 })
 
-// Disables, Enables and changes colour of buttons and resets timer when reset button is pressed
+// Resets Timer
 buttons[1].addEventListener("click",  ()=>{
-    toggle();
     reset();
+    buttons[1].disabled = true;
+    if(buttons[2].innerText === "Stop")
+    {
+        toggle();
+    }
 })
 
 //Starts or stops timer on click and Disables, Enables and changes colour of buttons
 buttons[2].addEventListener("click", (e)=>{
     if(checked() == true)
     {
-    start_stop();
-    toggle();
+        start_stop();
+        toggle();
     }
 })
 
