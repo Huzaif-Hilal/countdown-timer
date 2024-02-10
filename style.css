@@ -91,3 +91,9 @@ main > div.inputs-section > input{
 .none{
     display: none;
 }
+
+@media only screen and (max-width: 414px){
+    main > div.inputs-section > input{
+        margin: 0px 50px 5px 8px;
+    }
+}
