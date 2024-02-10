@@ -67,7 +67,7 @@ const start_stop = () => {
  
 //Checks timer every second, check if timer has ended
 const check_time = (time) =>{
-    if(time[0] == time[1])
+    if(time[0] == time[1] && time[0] == "00")
     {
         clearInterval(TimeUpdater);
         reset();
