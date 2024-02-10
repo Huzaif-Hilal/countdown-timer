@@ -119,7 +119,7 @@ buttons[2].addEventListener("click", (e)=>{
 
 //Updates Inner HTML of timer when there is a change in seconds input field
 minutes_in.addEventListener("change", ()=>{
-    if(minutes_in.value<0 || minutes_in.value.trim() == "")
+    if(minutes_in.value<0 || minutes_in.value.trim() == ""  ||  minutes_in.value == "-0" || minutes_in.value == "-00" || String(minutes_in.value).length > 2)
     {
         minutes_in.value = 0;
     } else if(minutes_in.value.trim() > 99) minutes_in.value = 99;
@@ -133,7 +133,7 @@ minutes_in.addEventListener("change", ()=>{
 
 //Updates Inner HTML of timer when there is a change in seconds input field
 seconds_in.addEventListener("change", ()=>{
-    if(seconds_in.value<0 || seconds_in.value.trim() == "")
+    if(seconds_in.value<0 || seconds_in.value.trim() == "" ||  seconds_in.value == "-0"||seconds_in.value == "-00" || String(seconds_in.value).length > 2)
     {
         seconds_in.value = 0;
     }
